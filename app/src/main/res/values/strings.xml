@@ -1,3 +1,14 @@
 <resources>
-    <string name="app_name">WeekThreeChallengeOne</string>
+    <string name="app_name">Guia Turistica</string>
+
+    <string name="category_item1">Parques</string>
+
+    <string name="category_item2">Parques</string>
+
+    <string name="category_item3">Parques</string>
+
+    <string name="category_item4">Parques</string>
+
+
+
 </resources>
