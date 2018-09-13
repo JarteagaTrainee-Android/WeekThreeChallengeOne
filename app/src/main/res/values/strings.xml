@@ -1,14 +1,10 @@
 <resources>
     <string name="app_name">Guia Turistica</string>
-
-    <string name="category_item1">Parques</string>
-
-    <string name="category_item2">Parques</string>
-
-    <string name="category_item3">Parques</string>
-
-    <string name="category_item4">Parques</string>
-
+    <string name="category_item1">Gastronomia</string>
+    <string name="category_item2">Sitios Arqueologicos</string>
+    <string name="category_item3">Ciudades</string>
+    <string name="category_item4">Montañas</string>
+    <string name="category_item5">Playas</string>
 
 
 </resources>

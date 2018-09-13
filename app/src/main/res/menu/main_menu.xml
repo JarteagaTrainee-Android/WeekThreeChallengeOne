@@ -1,21 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_camera"
-            android:icon="@drawable/ic_launcher_foreground"
-            android:title="@string/category_item1" />
+            android:id="@+id/nav_food"
+            android:color="@color/colorPrimary"
+            android:icon="@drawable/ic_icons8_food"
+            android:title="@string/category_item1"
+            android:state_checked="true"/>
         <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_launcher_foreground"
-            android:title="@string/category_item2" />
+            android:id="@+id/nav_archaeology"
+            android:color="@color/colorPrimary"
+            android:icon="@drawable/ic_icons8_archaeology"
+            android:title="@string/category_item2"
+            android:state_checked="false"/>
         <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_launcher_foreground"
-            android:title="@string/category_item3" />
+            android:id="@+id/nav_city"
+            android:color="@color/colorPrimary"
+            android:icon="@drawable/ic_icons8_city"
+            android:title="@string/category_item3"
+            android:state_checked="false"/>
         <item
-            android:id="@+id/nav_manage"
-            android:icon="@drawable/ic_launcher_foreground"
-            android:title="@string/category_item4" />
+            android:id="@+id/nav_mountain"
+            android:color="@color/colorPrimary"
+            android:icon="@drawable/ic_icons8_mountain"
+            android:title="@string/category_item4"
+            android:state_checked="false"/>
+        <item
+
+            android:id="@+id/nav_beach"
+            android:icon="@drawable/ic_icons8_beach"
+            android:title="@string/category_item4"
+            android:state_checked="false"/>
     </group>
 </menu>
