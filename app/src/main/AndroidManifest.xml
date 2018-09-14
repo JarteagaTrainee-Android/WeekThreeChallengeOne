@@ -16,9 +16,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".DetailPlace" />
-        <activity android:name=".DetailPlaceWeb"></activity>
+
+        <activity android:name=".DetailPlaceActivity" >
+
+        </activity>
+        <activity android:name=".DetailPlaceWeb">
+        </activity>
 
     </application>
-    <uses-permission android:name="android.permission.INTERNET"/>®
+    <uses-permission android:name="android.permission.INTERNET"/>
 </manifest>

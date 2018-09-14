@@ -4,6 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class CardItem implements Parcelable {
+    private int mFilterCategory;
     private int mCardImgRs;
     private int mColorBarRs;
     private int mLogo;
@@ -12,25 +13,15 @@ public class CardItem implements Parcelable {
     private String mPhone;
     private String mSiteUrl;
     private String mLatitude;
+    private String mLongitude;
 
-    public String getLatitude() {
-        return mLatitude;
+    public int getFilterCategory() {
+        return mFilterCategory;
     }
 
-    public void setLatitude(String mLatitude) {
-        this.mLatitude = mLatitude;
+    public void setFilterCategory(int mFilterCategory) {
+        this.mFilterCategory = mFilterCategory;
     }
-
-    public String getLongitud() {
-        return mLongitud;
-    }
-
-    public void setLongitud(String mLongitud) {
-        this.mLongitud = mLongitud;
-    }
-
-    private String mLongitud;
-
 
     public int getCardImgRs() {
         return mCardImgRs;
@@ -88,6 +79,25 @@ public class CardItem implements Parcelable {
         this.mSiteUrl = mSiteUrl;
     }
 
+    public String getLatitude() {
+        return mLatitude;
+    }
+
+    public void setLatitude(String mLatitude) {
+        this.mLatitude = mLatitude;
+    }
+
+    public String getLongitude() {
+        return mLongitude;
+    }
+
+    public void setLongitude(String mLongitude) {
+        this.mLongitude = mLongitude;
+    }
+
+    public CardItem() {
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -95,6 +105,7 @@ public class CardItem implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(this.mFilterCategory);
         dest.writeInt(this.mCardImgRs);
         dest.writeInt(this.mColorBarRs);
         dest.writeInt(this.mLogo);
@@ -103,13 +114,11 @@ public class CardItem implements Parcelable {
         dest.writeString(this.mPhone);
         dest.writeString(this.mSiteUrl);
         dest.writeString(this.mLatitude);
-        dest.writeString(this.mLongitud);
-    }
-
-    public CardItem() {
+        dest.writeString(this.mLongitude);
     }
 
     protected CardItem(Parcel in) {
+        this.mFilterCategory = in.readInt();
         this.mCardImgRs = in.readInt();
         this.mColorBarRs = in.readInt();
         this.mLogo = in.readInt();
@@ -118,10 +127,10 @@ public class CardItem implements Parcelable {
         this.mPhone = in.readString();
         this.mSiteUrl = in.readString();
         this.mLatitude = in.readString();
-        this.mLongitud = in.readString();
+        this.mLongitude = in.readString();
     }
 
-    public static final Parcelable.Creator<CardItem> CREATOR = new Parcelable.Creator<CardItem>() {
+    public static final Creator<CardItem> CREATOR = new Creator<CardItem>() {
         @Override
         public CardItem createFromParcel(Parcel source) {
             return new CardItem(source);

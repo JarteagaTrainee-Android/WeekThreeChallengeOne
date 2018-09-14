@@ -19,8 +19,9 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/design_default_color_primary"
-            app:titleTextColor="@color/primaryTextColor"
-            android:theme="@style/ThemeOverlay.AppCompat.ActionBar" />
+            android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+            app:subtitleTextColor="@color/primaryTextColor"
+            app:titleTextColor="@color/primaryTextColor" />
 
     </FrameLayout>
     <!-- Container for contents of drawer - use NavigationView to make configuration easier -->

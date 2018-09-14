@@ -1,8 +1,6 @@
 package com.applaudostudio.weekthreechallengeone.adapter;
 
 import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
@@ -12,7 +10,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.applaudostudio.weekthreechallengeone.DetailPlace;
 import com.applaudostudio.weekthreechallengeone.R;
 
 
@@ -22,13 +19,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+    private final ItemSelectedListener mCallback;
     private List<CardItem> mDataSet;
-    public static final String BUNDLE_KEY="DATA_DETAIL";
+    public static final String BUNDLE_KEY = "DATA_DETAIL";
     protected CardItem mActualItem;
 
-    public ListAdapter(List<CardItem> dataList) {
+    public ListAdapter(List<CardItem> dataList, ItemSelectedListener callback) {
         mDataSet = new ArrayList<>();
         mDataSet = dataList;
+        this.mCallback = callback;
     }
 
     @NonNull
@@ -37,7 +36,7 @@ public class ListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         View v;
         v = LayoutInflater.from(viewGroup.getContext())
                 .inflate(R.layout.card_list, viewGroup, false);
-        mActualItem=mDataSet.get(i);
+        mActualItem = mDataSet.get(i);
         return new CardViewHolder(v);
     }
 
@@ -53,7 +52,6 @@ public class ListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     }
 
     private class CardViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        private Context mContext;
         private TextView mTxtTitle;
         private TextView mTxtDescription;
         private ImageView mImgPlace;
@@ -61,12 +59,10 @@ public class ListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
         public CardViewHolder(@NonNull View itemView) {
             super(itemView);
-            mContext = itemView.getContext();
             mTxtTitle = itemView.findViewById(R.id.textViewTitle);
             mTxtDescription = itemView.findViewById(R.id.textViewPlaceDescription);
             mImgPlace = itemView.findViewById(R.id.imageViewPlace);
             itemView.setOnClickListener(this);
-
         }
 
         void bindData(CardItem data) {
@@ -75,18 +71,23 @@ public class ListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             mImgPlace.setImageResource(data.getCardImgRs());
         }
 
+
         @Override
         public void onClick(View view) {
-            switch(view.getId()){
+            switch (view.getId()) {
                 case R.id.layoutContainer:
-                    Bundle bundle = new Bundle();
-                    bundle.putParcelable(BUNDLE_KEY,mActualItem);
-                    Intent intent = new Intent(mContext, DetailPlace.class);
-                    intent.putExtra(BUNDLE_KEY,bundle);
-                    mContext.startActivity(intent);
+                    if (mCallback != null) {
+                        mCallback.onClickItemToShow(mDataSet.get(getAdapterPosition()));
+                    }
                     break;
             }
         }
+    }
+
+    public interface ItemSelectedListener {
+
+        void onClickItemToShow(CardItem cardItem);
+
     }
 
 }

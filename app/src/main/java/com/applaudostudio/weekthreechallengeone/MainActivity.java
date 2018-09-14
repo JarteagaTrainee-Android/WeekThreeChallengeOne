@@ -21,9 +21,16 @@ import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+    private static final int CATEGORY_FILTER_FOOD = 1;
+    private static final int CATEGORY_FILTER_ARCHAEOLOGY = 2;
+    private static final int CATEGORY_FILTER_CITY = 3;
+    private static final int CATEGORY_FILTER_MOUNTAIN = 4;
+    private static final int CATEGORY_FILTER_BEACH = 5;
+
 
     private DrawerLayout mDrawerLayout;
     private List<CardItem> mDataSet;
+    private FragmentManager manager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,54 +44,53 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         ActionBar actionbar = getSupportActionBar();
         actionbar.setDisplayHomeAsUpEnabled(true);
         actionbar.setHomeAsUpIndicator(R.drawable.ic_icons8_menu);
-        NavigationView navigationView = findViewById(R.id.nav_view);
 
+
+        NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(
                 new NavigationView.OnNavigationItemSelectedListener() {
                     @Override
                     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                        FragmentManager manager = getSupportFragmentManager();
-                        Fragment fragment = null;
                         // set item as selected to persist highlight
                         menuItem.setChecked(true);
                         // close drawer when item is tapped
                         mDrawerLayout.closeDrawers();
-
                         // Add code here to update the UI based on the item selected
                         // For example, swap UI fragments here
                         switch (menuItem.getItemId()) {
                             case R.id.nav_food:
-                                fragment= ListFragment.newInstance(mDataSet);
+                                initFragment(CATEGORY_FILTER_FOOD);
                                 break;
                             case R.id.nav_archaeology:
-                                fragment= ListFragment.newInstance(mDataSet);
-
+                                initFragment(CATEGORY_FILTER_ARCHAEOLOGY);
                                 break;
                             case R.id.nav_city:
-                                fragment= ListFragment.newInstance(mDataSet);
-
+                                initFragment(CATEGORY_FILTER_CITY);
                                 break;
                             case R.id.nav_mountain:
-                                fragment= ListFragment.newInstance(mDataSet);
-
+                                initFragment(CATEGORY_FILTER_MOUNTAIN);
                                 break;
                             case R.id.nav_beach:
-                                fragment= ListFragment.newInstance(mDataSet);
-
+                                initFragment(CATEGORY_FILTER_BEACH);
                                 break;
                         }
-                        FragmentTransaction transaction = manager.beginTransaction();
-                        assert fragment != null;
-                        transaction.replace(R.id.content_frame, fragment);
-                        transaction.commit();
+
 
                         return true;
                     }
                 });
-
-
+        initFragment(CATEGORY_FILTER_FOOD);
     }
 
+    public void initFragment(int filterType) {
+        manager = getSupportFragmentManager();
+
+        Fragment fragment = ListFragment.newInstance(mDataSet);
+        FragmentTransaction transaction = manager.beginTransaction();
+        assert fragment != null;
+        transaction.replace(R.id.content_frame, fragment);
+        transaction.commit();
+    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -101,16 +107,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-    private void initData(){
-        mDataSet=new ArrayList<>();
+    private void initData() {
+        mDataSet = new ArrayList<>();
         CardItem itemd = new CardItem();
+        itemd.setFilterCategory(1);
         itemd.setCardPlaName("Lugar 1");
+        itemd.setPhone("2222-2222");
         itemd.setDescription("DESCRIPCION 1");
-        itemd.setColorBarRs(R.color.secondaryColor);
+        itemd.setColorBarRs(R.color.listBackColor);
         itemd.setCardImgRs(R.drawable.ic_launcher_background);
         itemd.setLogo(R.drawable.ic_launcher_foreground);
         itemd.setLatitude("13.6929403");
-        itemd.setLongitud("-89.21819110000001");
+        itemd.setLongitude("-89.2181911");
+        itemd.setSiteUrl("https://www.google.com");
+        mDataSet.add(itemd);
+        mDataSet.add(itemd);
+        mDataSet.add(itemd);
+
+        itemd.setFilterCategory(2);
         mDataSet.add(itemd);
         mDataSet.add(itemd);
         mDataSet.add(itemd);
@@ -119,20 +133,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mDataSet.add(itemd);
         mDataSet.add(itemd);
         mDataSet.add(itemd);
+        itemd.setFilterCategory(3);
         mDataSet.add(itemd);
         mDataSet.add(itemd);
         mDataSet.add(itemd);
         mDataSet.add(itemd);
         mDataSet.add(itemd);
         mDataSet.add(itemd);
+        itemd.setFilterCategory(4);
         mDataSet.add(itemd);
         mDataSet.add(itemd);
         mDataSet.add(itemd);
         mDataSet.add(itemd);
         mDataSet.add(itemd);
         mDataSet.add(itemd);
+        itemd.setFilterCategory(5);
         mDataSet.add(itemd);
         mDataSet.add(itemd);
+        mDataSet.add(itemd);
+        mDataSet.add(itemd);
+        mDataSet.add(itemd);
+        mDataSet.add(itemd);
+
 
     }
 
