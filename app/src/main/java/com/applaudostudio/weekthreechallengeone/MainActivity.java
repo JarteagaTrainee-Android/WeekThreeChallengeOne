@@ -2,8 +2,8 @@ package com.applaudostudio.weekthreechallengeone;
 
 import android.content.res.Resources;
 import android.content.res.TypedArray;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.annotation.StringRes;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -12,7 +12,6 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
@@ -34,7 +33,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private DrawerLayout mDrawerLayout;
     private List<CardItem> mDataSet;
-    private FragmentManager manager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +44,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         final Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         final ActionBar actionbar = getSupportActionBar();
+        assert actionbar != null;
         actionbar.setDisplayHomeAsUpEnabled(true);
         actionbar.setHomeAsUpIndicator(R.drawable.ic_icons8_menu);
 
@@ -93,7 +92,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void initFragment(int filterType) {
-        manager = getSupportFragmentManager();
+        FragmentManager manager = getSupportFragmentManager();
         List<CardItem> filteredData = new ArrayList<>();
         for(CardItem itemData : mDataSet){
             if(itemData.getFilterCategory()==filterType){
@@ -154,7 +153,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 itemData.setColorBarRs(getIdRsColorByCategory(itemData.getFilterCategory()));
                 mDataSet.add(itemData);
             }
-
+        ta.recycle();
     }
 
     private int getIdRsColorByCategory(int category){

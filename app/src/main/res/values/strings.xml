@@ -17,7 +17,6 @@
         <item>-89.2415602</item>
         <item>@drawable/logo_tinku</item>
         <item>@drawable/tiku_restaurante</item>
-        <item>@color/colorAccent</item>
     </string-array>
 
     <string-array name="place02">
@@ -30,7 +29,6 @@
         <item>-89.250623</item>
         <item>@drawable/casa_casador_logo</item>
         <item>@drawable/casa_casador</item>
-        <item>@color/colorAccent</item>
     </string-array>
 
     <string-array name="place03">
@@ -45,7 +43,6 @@
         <item>-89.2415602</item>
         <item>@drawable/dennys</item>
         <item>@drawable/dennys_outside</item>
-        <item>@color/colorAccent</item>
     </string-array>
 
     <string-array name="place04">
@@ -59,30 +56,92 @@ Comida cubana en El Salvador. Instalaciones cómodas, comida muy buena, precios 
         <item>-89.2415602</item>
         <item>@drawable/oye_chico</item>
         <item>@drawable/oye_chico_truck</item>
-        <item>@color/colorAccent</item>
     </string-array>
 
 
     <string-array name="place05">
-        <item>2</item>
-        <item>Oye Chico</item>
+        <item>1</item>
+        <item>Picasso Stone Flame Oven</item>
         <item>
-Comida cubana en El Salvador. Instalaciones cómodas, comida muy buena, precios accesibles. Servicio de personal muy bueno. Les recomiendo los tostones y los mojitos.        </item>
+        Agradable ambiente, pizzas de combinaciones inusuales pero sabrosas: langosta, almejas, camarones; arugula y alcachofas, queso azul. Buenos precios y amable atencion.
+        </item>
+        <item>2223 3700</item>
+        <item>https://www.piccaso.com</item>
+        <item>13.6905631</item>
+        <item>-89.2415602</item>
+        <item>@drawable/picaso</item>
+        <item>@drawable/picaso_photo</item>
+    </string-array>
+
+    <string-array name="place06">
+        <item>1</item>
+        <item>Tucson steak houses</item>
+        <item>
+            La experiencia de sabor, atención y calidad más inn de La Gran Vía inició sus operaciones el 16 de Enero de 2006 en El Salvador, somos una franquicia de Tucson Argentina.
+        </item>
+        <item>2223 3700</item>
+        <item>https://www.tucsonstakehouse.com</item>
+        <item>13.6905631</item>
+        <item>-89.2415602</item>
+        <item>@drawable/tucson_logo</item>
+        <item>@drawable/tucson_restaurante</item>
+    </string-array>
+
+
+    <string-array name="place07">
+        <item>1</item>
+        <item>El Parce</item>
+        <item>
+            Foodtruck con influencia Colombiana rodando sobre El Salvador
+        </item>
+        <item>2223 3700</item>
+        <item>https://www.elparce.com</item>
+        <item>13.6905631</item>
+        <item>-89.2415602</item>
+        <item>@drawable/el_parce</item>
+        <item>@drawable/el_parce_truck</item>
+    </string-array>
+
+
+    <string-array name="place08">
+        <item>1</item>
+        <item>Le Poutine</item>
+        <item>
+        Plato tradicional de Quebec, Canada. A base de papa frita.
+        </item>
+        <item>2223 3700</item>
+        <item>https://www.lepoutine.com</item>
+        <item>13.6905631</item>
+        <item>-89.2415602</item>
+        <item>@drawable/le_poutine</item>
+        <item>@drawable/le_poutine_restaurant</item>
+    </string-array>
+
+
+    <string-array name="place09">
+        <item>2</item>
+        <item>Joya de Cere</item>
+        <item>
+            Joya de Cere	Joya de Cerén es un sitio precolombino de El Salvador situado en las proximidades de San Juan Opico y Las Flores, en el departamento de La Libertad, en la región centroccidental de El Salvador.        </item>
         <item>2223 3700</item>
         <item>https://www.oyechico.com</item>
         <item>13.6905631</item>
         <item>-89.2415602</item>
-        <item>@drawable/oye_chico</item>
-        <item>@drawable/oye_chico_truck</item>
-        <item>@color/colorAccent</item>
+        <item>@drawable/picaso</item>
+        <item>@drawable/picaso_photo</item>
     </string-array>
 
 
     <string-array name="Places">
-            <item>@array/place01</item>
-            <item>@array/place02</item>
-            <item>@array/place03</item>
-            <item>@array/place04</item>
+        <item>@array/place01</item>
+        <item>@array/place02</item>
+        <item>@array/place03</item>
+        <item>@array/place04</item>
+        <item>@array/place05</item>
+        <item>@array/place06</item>
+        <item>@array/place07</item>
+        <item>@array/place08</item>
+        <item>@array/place09</item>
     </string-array>
 
 </resources>

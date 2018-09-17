@@ -1,19 +1,15 @@
 package com.applaudostudio.weekthreechallengeone.adapter;
 
-import android.content.Context;
+import android.annotation.SuppressLint;
 import android.support.annotation.NonNull;
-import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toolbar;
 
 import com.applaudostudio.weekthreechallengeone.R;
-
-
 import com.applaudostudio.weekthreechallengeone.model.CardItem;
 
 import java.util.ArrayList;
@@ -22,8 +18,6 @@ import java.util.List;
 public class ListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private final ItemSelectedListener mCallback;
     private List<CardItem> mDataSet;
-    public static final String BUNDLE_KEY = "DATA_DETAIL";
-    protected CardItem mActualItem;
 
     public ListAdapter(List<CardItem> dataList, ItemSelectedListener callback) {
         mDataSet = new ArrayList<>();
@@ -37,7 +31,6 @@ public class ListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         View v;
         v = LayoutInflater.from(viewGroup.getContext())
                 .inflate(R.layout.card_list, viewGroup, false);
-        mActualItem = mDataSet.get(i);
         return new CardViewHolder(v);
     }
 
@@ -56,10 +49,9 @@ public class ListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         private TextView mTxtTitle;
         private TextView mTxtDescription;
         private ImageView mImgPlace;
-        private ConstraintLayout layoutContainer;
         private View mDivBar;
 
-        public CardViewHolder(@NonNull View itemView) {
+        CardViewHolder(@NonNull View itemView) {
             super(itemView);
             mTxtTitle = itemView.findViewById(R.id.textViewTitle);
             mTxtDescription = itemView.findViewById(R.id.textViewPlaceDescription);
@@ -68,6 +60,7 @@ public class ListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             itemView.setOnClickListener(this);
         }
 
+        @SuppressLint("SetTextI18n")
         void bindData(CardItem data) {
             mTxtTitle.setText(data.getCardPlaName());
             mTxtDescription.setText(data.getDescription().substring(0,30)+ "...");
