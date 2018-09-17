@@ -1,6 +1,9 @@
 package com.applaudostudio.weekthreechallengeone;
 
+import android.content.res.Resources;
+import android.content.res.TypedArray;
 import android.support.annotation.NonNull;
+import android.support.annotation.StringRes;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -18,6 +21,7 @@ import com.applaudostudio.weekthreechallengeone.model.CardItem;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -39,9 +43,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         initData();
 
         mDrawerLayout = findViewById(R.id.drawer_layout);
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        final Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        ActionBar actionbar = getSupportActionBar();
+        final ActionBar actionbar = getSupportActionBar();
         actionbar.setDisplayHomeAsUpEnabled(true);
         actionbar.setHomeAsUpIndicator(R.drawable.ic_icons8_menu);
 
@@ -59,18 +63,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         // For example, swap UI fragments here
                         switch (menuItem.getItemId()) {
                             case R.id.nav_food:
+                                toolbar.setBackgroundColor(getIdRsColorByCategory(CATEGORY_FILTER_FOOD));
                                 initFragment(CATEGORY_FILTER_FOOD);
                                 break;
                             case R.id.nav_archaeology:
+                                toolbar.setBackgroundColor(getIdRsColorByCategory(CATEGORY_FILTER_ARCHAEOLOGY));
                                 initFragment(CATEGORY_FILTER_ARCHAEOLOGY);
                                 break;
                             case R.id.nav_city:
+                                toolbar.setBackgroundColor(getIdRsColorByCategory(CATEGORY_FILTER_CITY));
                                 initFragment(CATEGORY_FILTER_CITY);
                                 break;
                             case R.id.nav_mountain:
+                                toolbar.setBackgroundColor(getIdRsColorByCategory(CATEGORY_FILTER_MOUNTAIN));
                                 initFragment(CATEGORY_FILTER_MOUNTAIN);
                                 break;
                             case R.id.nav_beach:
+                                toolbar.setBackgroundColor(getIdRsColorByCategory(CATEGORY_FILTER_BEACH));
                                 initFragment(CATEGORY_FILTER_BEACH);
                                 break;
                         }
@@ -79,13 +88,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         return true;
                     }
                 });
+        toolbar.setBackgroundColor(getIdRsColorByCategory(CATEGORY_FILTER_FOOD));
         initFragment(CATEGORY_FILTER_FOOD);
     }
 
     public void initFragment(int filterType) {
         manager = getSupportFragmentManager();
-
-        Fragment fragment = ListFragment.newInstance(mDataSet);
+        List<CardItem> filteredData = new ArrayList<>();
+        for(CardItem itemData : mDataSet){
+            if(itemData.getFilterCategory()==filterType){
+                filteredData.add(itemData);
+            }
+        }
+        Fragment fragment = ListFragment.newInstance(filteredData);
         FragmentTransaction transaction = manager.beginTransaction();
         assert fragment != null;
         transaction.replace(R.id.content_frame, fragment);
@@ -109,53 +124,60 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void initData() {
         mDataSet = new ArrayList<>();
-        CardItem itemd = new CardItem();
-        itemd.setFilterCategory(1);
-        itemd.setCardPlaName("Lugar 1");
-        itemd.setPhone("2222-2222");
-        itemd.setDescription("DESCRIPCION 1");
-        itemd.setColorBarRs(R.color.listBackColor);
-        itemd.setCardImgRs(R.drawable.ic_launcher_background);
-        itemd.setLogo(R.drawable.ic_launcher_foreground);
-        itemd.setLatitude("13.6929403");
-        itemd.setLongitude("-89.2181911");
-        itemd.setSiteUrl("https://www.google.com");
-        mDataSet.add(itemd);
-        mDataSet.add(itemd);
-        mDataSet.add(itemd);
 
-        itemd.setFilterCategory(2);
-        mDataSet.add(itemd);
-        mDataSet.add(itemd);
-        mDataSet.add(itemd);
-        mDataSet.add(itemd);
-        mDataSet.add(itemd);
-        mDataSet.add(itemd);
-        mDataSet.add(itemd);
-        mDataSet.add(itemd);
-        itemd.setFilterCategory(3);
-        mDataSet.add(itemd);
-        mDataSet.add(itemd);
-        mDataSet.add(itemd);
-        mDataSet.add(itemd);
-        mDataSet.add(itemd);
-        mDataSet.add(itemd);
-        itemd.setFilterCategory(4);
-        mDataSet.add(itemd);
-        mDataSet.add(itemd);
-        mDataSet.add(itemd);
-        mDataSet.add(itemd);
-        mDataSet.add(itemd);
-        mDataSet.add(itemd);
-        itemd.setFilterCategory(5);
-        mDataSet.add(itemd);
-        mDataSet.add(itemd);
-        mDataSet.add(itemd);
-        mDataSet.add(itemd);
-        mDataSet.add(itemd);
-        mDataSet.add(itemd);
+        Resources res = getResources();
+        TypedArray ta = res.obtainTypedArray(R.array.Places);
+        int n = ta.length();
+        String[][] array = new String[n][];
+        for (int i = 0; i < n; ++i) {
+            int id = ta.getResourceId(i, 0);
+            if (id > 0) {
+                array[i] = res.getStringArray(id);
+            }
+        }
 
+            for(String[] data:array){
+                CardItem itemData= new CardItem();
+                itemData.setFilterCategory(Integer.parseInt(data[0]));
+                itemData.setCardPlaName(data[1]);
+                itemData.setDescription(data[2]);
+                itemData.setPhone(data[3]);
+                itemData.setSiteUrl(data[4]);
+                itemData.setLatitude(data[5]);
+                itemData.setLongitude(data[6]);
+                String[] splitLogo=data[7].split("/");
+                itemData.setLogo(getResources().getIdentifier(splitLogo[2].split(Pattern.quote("."))[0],
+                        "drawable", getPackageName()));
+                String[] splitImg=data[8].split("/");
+                itemData.setCardImgRs(getResources().getIdentifier(splitImg[2].split(Pattern.quote("."))[0],
+                        "drawable", getPackageName()));
+                itemData.setColorBarRs(getIdRsColorByCategory(itemData.getFilterCategory()));
+                mDataSet.add(itemData);
+            }
 
     }
+
+    private int getIdRsColorByCategory(int category){
+        switch (category){
+            case CATEGORY_FILTER_FOOD:
+                return R.color.foodColor;
+            case CATEGORY_FILTER_ARCHAEOLOGY:
+                return R.color.archaeologyColor;
+
+            case CATEGORY_FILTER_CITY:
+                return R.color.cityColor;
+
+            case CATEGORY_FILTER_MOUNTAIN:
+                return R.color.mountainColor;
+
+            case CATEGORY_FILTER_BEACH:
+                return R.color.beachColor;
+
+            default:
+                return R.color.colorAccent;
+
+        }
+    }
+
 
 }

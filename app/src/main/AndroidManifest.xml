@@ -20,7 +20,7 @@
         <activity android:name=".DetailPlaceActivity" >
 
         </activity>
-        <activity android:name=".DetailPlaceWeb">
+        <activity android:name=".DetailPlaceWebActivity">
         </activity>
 
     </application>

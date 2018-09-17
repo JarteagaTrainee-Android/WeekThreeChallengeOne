@@ -11,5 +11,9 @@
         <color name="secondaryDarkColor">#002984</color>
         <color name="primaryTextColor">#ffffff</color>
         <color name="secondaryTextColor">#ffffff</color>
-
+        <color name="foodColor">#ff0000</color>
+        <color name="archaeologyColor">#9dfbff00</color>
+        <color name="cityColor">#d500ff</color>
+        <color name="mountainColor">#3cff00</color>
+        <color name="beachColor">#a7001eff</color>
 </resources>

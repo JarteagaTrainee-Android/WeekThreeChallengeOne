@@ -7,12 +7,82 @@
     <string name="category_item5">Playas</string>
 
 
+    <string-array name="place01">
+        <item>1</item>
+        <item>Tinku</item>
+        <item>La mejor comida peruana en El Salvador!!</item>
+        <item>2223 3700</item>
+        <item>https://www.tinku.com</item>
+        <item>13.6905631</item>
+        <item>-89.2415602</item>
+        <item>@drawable/logo_tinku</item>
+        <item>@drawable/tiku_restaurante</item>
+        <item>@color/colorAccent</item>
+    </string-array>
+
+    <string-array name="place02">
+        <item>1</item>
+        <item>La Casa del Casador</item>
+        <item>Una increíble opción para disfrutar de la comida alemana en toda su esencia. Una amplia carta de carnes, vinos, licores y sobre todo lo más importante: Cervezas! </item>
+        <item>2263 8778</item>
+        <item>http://www.casadelcazador.net</item>
+        <item>13.7016863</item>
+        <item>-89.250623</item>
+        <item>@drawable/casa_casador_logo</item>
+        <item>@drawable/casa_casador</item>
+        <item>@color/colorAccent</item>
+    </string-array>
+
+    <string-array name="place03">
+        <item>1</item>
+        <item>Dennys</item>
+        <item>
+        Que el menu este disponible las 24horas es de lo mejor! Un sabor peculiar y exquisito! Sin duda alguna se merece mas de 5 estrellas! Lo recomiendo 100%! Es accesible, precio justo y siempre pero siempre tienen postres! Fav's!!
+        </item>
+        <item>2223 3700</item>
+        <item>https://www.dennys.com</item>
+        <item>13.6905631</item>
+        <item>-89.2415602</item>
+        <item>@drawable/dennys</item>
+        <item>@drawable/dennys_outside</item>
+        <item>@color/colorAccent</item>
+    </string-array>
+
+    <string-array name="place04">
+        <item>1</item>
+        <item>Oye Chico</item>
+        <item>
+Comida cubana en El Salvador. Instalaciones cómodas, comida muy buena, precios accesibles. Servicio de personal muy bueno. Les recomiendo los tostones y los mojitos.        </item>
+        <item>2223 3700</item>
+        <item>https://www.oyechico.com</item>
+        <item>13.6905631</item>
+        <item>-89.2415602</item>
+        <item>@drawable/oye_chico</item>
+        <item>@drawable/oye_chico_truck</item>
+        <item>@color/colorAccent</item>
+    </string-array>
+
+
+    <string-array name="place05">
+        <item>2</item>
+        <item>Oye Chico</item>
+        <item>
+Comida cubana en El Salvador. Instalaciones cómodas, comida muy buena, precios accesibles. Servicio de personal muy bueno. Les recomiendo los tostones y los mojitos.        </item>
+        <item>2223 3700</item>
+        <item>https://www.oyechico.com</item>
+        <item>13.6905631</item>
+        <item>-89.2415602</item>
+        <item>@drawable/oye_chico</item>
+        <item>@drawable/oye_chico_truck</item>
+        <item>@color/colorAccent</item>
+    </string-array>
+
+
     <string-array name="Places">
-        
-
-
-
-
+            <item>@array/place01</item>
+            <item>@array/place02</item>
+            <item>@array/place03</item>
+            <item>@array/place04</item>
     </string-array>
 
 </resources>

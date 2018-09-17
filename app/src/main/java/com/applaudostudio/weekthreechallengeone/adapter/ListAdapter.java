@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toolbar;
 
 import com.applaudostudio.weekthreechallengeone.R;
 
@@ -56,19 +57,23 @@ public class ListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         private TextView mTxtDescription;
         private ImageView mImgPlace;
         private ConstraintLayout layoutContainer;
+        private View mDivBar;
 
         public CardViewHolder(@NonNull View itemView) {
             super(itemView);
             mTxtTitle = itemView.findViewById(R.id.textViewTitle);
             mTxtDescription = itemView.findViewById(R.id.textViewPlaceDescription);
             mImgPlace = itemView.findViewById(R.id.imageViewPlace);
+            mDivBar = itemView.findViewById(R.id.dividerBar);
             itemView.setOnClickListener(this);
         }
 
         void bindData(CardItem data) {
             mTxtTitle.setText(data.getCardPlaName());
-            mTxtDescription.setText(data.getDescription());
-            mImgPlace.setImageResource(data.getCardImgRs());
+            mTxtDescription.setText(data.getDescription().substring(0,30)+ "...");
+            mImgPlace.setImageResource(data.getLogo());
+            mDivBar.setBackgroundColor(data.getColorBarRs());
+            mTxtTitle.setTextColor(data.getColorBarRs());
         }
 
 
